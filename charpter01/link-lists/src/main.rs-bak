@@ -1,0 +1,37 @@
+//#[derive(Debug)]
+//enum List<T> {
+//	Cons(T, Box<List<T>>),
+//	Nil,
+//}
+//
+//fn main() {
+//	let list: List<i32> = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Nil))));
+//	println!("{:?}", list);
+//}
+
+////实际上等价于
+//#[derive(Debug)]
+//enum List{
+//	Empty,
+//	Elem(i32, Box<List>),
+//}
+
+#[derive(Debug)]
+enum List {
+	Empty,
+	ElemThenEmpty(i32),
+	Elem(i32, Box<List>),
+}
+
+////1 表示形式
+//[] = stack
+//() = heap
+//[Elem A, ptr] -> (Elem B, ptr) -> (Empty, junk)
+//[Elem A, ptr] -> (Elem B)
+
+
+fn main() {
+	//let list = List::Elem(1, Box::new(List::Elem(2, Box::new(List::Elem(3, Box::new(List::Empty))))));
+	let list = List::Elem(1, Box::new(List::ElemThenEmpty(2)));
+	println!("{:?}", list);
+}

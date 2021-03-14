@@ -1,0 +1,59 @@
+List a = Empty | Elem a (List a)
+
+
+//1 表示形式
+[] = stack
+() = heap
+[Elem A, ptr] -> (Elem B, ptr) -> (Empty, junk)
+[Elem A, ptr] -> (Elem B)
+
+
+存在的问题：
+1、元素A是分配在栈上而不是分配在堆上的;
+2、最后的空元素也要分配空间
+
+//2 表示形式
+[] = stack
+() = heap
+[ptr] -> (Elem A, ptr) -> (Elem B, null) 
+
+
+//两种方式在链表拆分和合并的时候就会看出来优势
+第一种布局:
+
+[Elem A, ptr] -> (Elem B, ptr) -> (Elem C, ptr) -> (Empty *junk*)
+
+split off C:
+[Elem A, ptr] -> (Elem B, ptr) -> (Empty *junk*)
+
+[Elem C, ptr] -> (Empty *junk*)
+
+//涉及的操作：
+1、把c从堆上复制到栈上;
+2、在后面加一个空元素。
+
+
+第二种布局:
+
+[ptr] -> (Elem A, ptr) -> (Elem B, ptr) -> (Elem C, *null*)
+
+split off C:
+[ptr] -> (Elem A, ptr) -> (Elem B. *null*)
+[ptr] ->(Elem C, *null*)
+
+//涉及的操作
+1、B的ptr指向null
+2、新链表的ptr指向c
+
+
+enum Foo {
+    A(u32),
+    B(u64),
+    C(u8),
+}
+
+//上述枚举类型具体的实现
+struct FooRepr {
+    data: u64, // 根据tag的不同，这一项可以为u64，u32，或者u8
+    tag: u8, // 0 = A, 1 = B, 2 = C
+}

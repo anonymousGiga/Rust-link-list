@@ -1,0 +1,15 @@
+list----->    A -> B -> C -> D
+
+//head
+
+//单链表push：
+//1、创建node，node的值是E的值，node的next等于当前的head；2、head等于node 
+list-----> E-> A -> B -> C -> D
+
+
+//双链表push：
+//1、创建node，node的值是E的值，node的next等于当前的head,pre等于none;
+//2、A的pre要等于node（E）
+//3、head等于node(E)
+
+

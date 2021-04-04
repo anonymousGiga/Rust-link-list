@@ -1,0 +1,20 @@
+//栈
+input list:
+[Some(ptr)] -> (A, Some(ptr)) -> (B, None)
+
+stack push X:
+[Some(ptr)] -> (X, Some(ptr)) -> (A, Some(ptr)) -> (B, None)
+
+stack pop:
+[Some(ptr)] -> (A, Some(ptr)) -> (B, None)
+
+
+//队列
+input list:
+[Some(ptr)] -> (A, Some(ptr)) -> (B, None)
+
+flipped push X:
+[Some(ptr)] -> (A, Some(ptr)) -> (B, Some(ptr)) -> (X, None)
+
+flipped pop:
+[Some(ptr)] -> (B, Some(ptr)) -> (X, None)

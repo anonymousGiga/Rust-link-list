@@ -4,5 +4,7 @@
 
 原书地址：https://rust-unofficial.github.io/too-many-lists/index.html
 
-视频地址：后续上传B站，B站搜索“令狐一冲”
+视频地址:https://www.bilibili.com/video/BV1eb4y1Q7FA
+
+更多Rust视频教材请B站搜索“令狐一冲”
 
